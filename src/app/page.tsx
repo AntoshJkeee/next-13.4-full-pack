@@ -1,8 +1,16 @@
+'use client';
+
 import Image from 'next/image';
 import styles from './page.module.css';
 import './test.scss';
+import { decrement, increment, reset } from '../redux/features/counterSlice';
+import { useAppDispatch, useAppSelector } from '../redux/hooks';
+import { RootState } from '../redux/store';
 
 export default function Home() {
+	const count = useAppSelector((state: RootState) => state.counterReducer.value);
+	const dispatch = useAppDispatch();
+
 	return (
 		<main className={styles.main}>
 			<div className={styles.description}>
@@ -83,6 +91,12 @@ export default function Home() {
 					<p>Instantly deploy your Next.js site to a shareable URL with Vercel.</p>
 				</a>
 			</div>
+			<button onClick={() => dispatch(increment())}>redux increment</button>
+			<button onClick={() => dispatch(decrement())} style={{ marginInline: 16 }}>
+				redux decrement
+			</button>
+			<button onClick={() => dispatch(reset())}>redux reset</button>
+			<h1>{count}</h1>
 		</main>
 	);
 }
