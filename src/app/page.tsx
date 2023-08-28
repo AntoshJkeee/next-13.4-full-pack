@@ -3,8 +3,8 @@ import styles from './page.module.css';
 
 export default function Home() {
 
-	const handler = () => {
-		console.log('hello');
+	const handler = (a: string) => {
+		a.toLowerCase();
 	};
 
 	return (
