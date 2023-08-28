@@ -6,6 +6,7 @@ export default function Home() {
 
 	const handler = (a: string) => {
 		a.toLowerCase();
+		console.log('hello');
 	};
 
 	return (
